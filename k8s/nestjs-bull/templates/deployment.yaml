@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nestjs-jobs
+  name: nestjs-jobs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nestjs-jobs
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nestjs-jobs
+    spec:
+      containers:
+        - image: malewicz/nestjs-jobs
+          env:
+            - name: REDIS_HOST
+              value: nestjs-jobs-redis-master
+            - name: REDIS_PORT
+              value: '6379'
+          name: nestjs-jobs
+          ports:
+            - containerPort: 3000
+          resources: {}
+status: {}

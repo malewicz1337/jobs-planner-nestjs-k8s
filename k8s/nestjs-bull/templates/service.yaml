@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nestjs-jobs
+    app.kubernetes.io/managed-by: Helm
+  name: nestjs-jobs
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: nestjs-jobs
+  type: NodePort
+status:
+  loadBalancer: {}
